@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 app.config.from_object("app.config")
 
-from app.views import views
+from views import views
