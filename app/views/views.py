@@ -47,6 +47,8 @@ def save_pic():
         plt.savefig(save_pic)
         plt.close("all")
 
+        pictures = os.listdir("app/static/images")
+
         return render_template("result.html", url=url)
 
     return redirect(url_for('index'))
