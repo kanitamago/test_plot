@@ -5,24 +5,20 @@ import numpy as np
 import os
 import re
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PICTURE_DIR = os.path.join(BASE_DIR, 'app/static/images')
-
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/result", methods=["POST", "GET"])
 def save_pic():
-    pictures = os.listdir(PICTURE_DIR)
-    print(pictures)
+    pictures = os.listdir("app/static/images")
     url = None
     save_pic = None
     if request.method == "POST":
         #画像名を決定
-        if not pictures:
-            url = os.path.join(PICTURE_DIR, "create_pic1.png")
-            save_pic = os.path.join(PICTURE_DIR, "create_pic1.png")
+        if len(pictures) == 1:
+            url = "../static/images/create_pic1.png"
+            save_pic = "app/static/images/create_pic1.png")
         else:
             picture_str = "".join(pictures)
             pic_numList = re.findall("\d*", picture_str)
