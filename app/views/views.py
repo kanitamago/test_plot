@@ -11,14 +11,14 @@ def index():
 
 @app.route("/result", methods=["POST", "GET"])
 def save_pic():
-    pictures = os.listdir("static/images")
+    pictures = os.listdir("app/static/images")
     url = None
     save_pic = None
     if request.method == "POST":
         #画像名を決定
         if len(pictures) == 1:
             url = "../static/images/create_pic1.png"
-            save_pic = "/static/images/create_pic1.png")
+            save_pic = "app/static/images/create_pic1.png"
         else:
             picture_str = "".join(pictures)
             pic_numList = re.findall("\d*", picture_str)
