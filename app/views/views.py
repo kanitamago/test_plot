@@ -11,7 +11,7 @@ def index():
 
 @app.route("/result", methods=["POST", "GET"])
 def save_pic():
-    pictures = os.listdir("app/static/images")
+    #pictures = os.listdir("app/static/images")
     url = None
     save_pic = None
     if request.method == "POST":
