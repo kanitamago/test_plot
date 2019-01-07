@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>テストアプリ</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2 id="main-title">超簡素なプロットアプリ</h2>
+      <form class="input-form" action="{{ url_for('save_pic') }}" method="post">
+        <input type="text" name="x_value" placeholder="xの上限値">
+        <input type="text" name="y_value" placeholder="yの上限値">
+        <ul id="color-list">
+          <li>red</li>
+          <li>blue</li>
+          <li>green</li>
+          <li>yellow</li>
+          <li>pink</li>
+        </ul>
+        <input type="text" name="color" placeholder="上記のリストのうち一つを入力してください">
+        <button type="submit" name="button">送信</button>
+      </form>
+    </div>
+  </body>
+</html>
