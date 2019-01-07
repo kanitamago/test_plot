@@ -5,17 +5,19 @@ import numpy as np
 import os
 import re
 
+pictures = None
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/result", methods=["POST", "GET"])
 def save_pic():
+    global pictures
     url = None
     save_pic = None
     if request.method == "POST":
         #画像名を決定
-        pictures = os.listdir("app/static/images")
         if not pictures:
             url = "../static/images/create_pic1.png"
             save_pic = "app/static/images/create_pic1.png"
