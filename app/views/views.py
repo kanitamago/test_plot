@@ -18,7 +18,7 @@ def save_pic():
         #画像名を決定
         if len(pictures) == 1:
             url = "../static/images/create_pic1.png"
-            save_pic = "static/images/create_pic1.png")
+            save_pic = "/static/images/create_pic1.png")
         else:
             picture_str = "".join(pictures)
             pic_numList = re.findall("\d*", picture_str)
