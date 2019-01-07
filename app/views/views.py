@@ -5,7 +5,8 @@ import numpy as np
 import os
 import re
 
-pictures = None
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PICTURE_DIR = os.path.join(BASE_DIR, 'app/static/images')
 
 @app.route("/")
 def index():
@@ -13,14 +14,14 @@ def index():
 
 @app.route("/result", methods=["POST", "GET"])
 def save_pic():
-    global pictures
+    pictures = os.listdir(PICTURE_DIR)
     url = None
     save_pic = None
     if request.method == "POST":
         #画像名を決定
         if not pictures:
-            url = "../static/images/create_pic1.png"
-            save_pic = "app/static/images/create_pic1.png"
+            url = os.path.join(PICTURE_DIR, "create_pic1.png")
+            save_pic = os.path.join(PICTURE_DIR, "create_pic1.png")
         else:
             picture_str = "".join(pictures)
             pic_numList = re.findall("\d*", picture_str)
@@ -46,8 +47,6 @@ def save_pic():
         #プロット結果を保存
         plt.savefig(save_pic)
         plt.close("all")
-
-        pictures = os.listdir("app/static/images")
 
         return render_template("result.html", url=url)
 
